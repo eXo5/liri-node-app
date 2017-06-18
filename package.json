@@ -4,6 +4,7 @@
   "description": "LIRI Node is a command line application that allows for quick access to specific information as will be defined in the README",
   "main": "liri.js",
   "dependencies": {
+    "node-spotify-api": "^1.0.5",
     "request": "^2.81.0"
   },
   "devDependencies": {},
