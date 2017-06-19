@@ -1,0 +1,1 @@
+ C:\Program Files\nodejs\node.exe,C:\Users\eXo\Desktop\RCB\liri-node-app\liri,movie-this,fight,club 

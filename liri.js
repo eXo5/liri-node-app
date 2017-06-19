@@ -3,7 +3,13 @@
 //global variables:
 var fs = require("fs");
 var tk = require("./keys.js");
-var twitterKeys = tk.twitterKeys;
+var Twitter = require("twitter");
+var client = new Twitter({
+consumer_key: tk.twitterKeys.consumer_key,
+consumer_secret: tk.twitterKeys.consumer_secret,
+access_token_key: tk.twitterKeys.access_token_key,
+access_token_secret: tk.twitterKeys.access_token_secret,
+});
 var request = require("request");
 var argv = process.argv;
 var movieWords = "";
@@ -15,7 +21,12 @@ var spotify = new Spotify({
 	id: "b186e3b489564b47ae52fe55bfc92a6e",
 	secret: "9b7091dbd1064c0db44445bee55881db"
 });
-
+var txtfile = require("./log.txt");
+fs.appendFile("log.txt", " " + argv + " ", function(err){
+	if (err) {
+		console.log(err);
+	}
+});
 if (argv[2] == "movie-this") {
 	movieThis();
 }
@@ -26,6 +37,10 @@ if (argv[2] == "spotify-this-song")	{
 
 if (argv[2] == "do-what-it-says") {
 	whatItDo();
+};
+
+if (argv[2] == "my-tweets"){
+	tweets();
 };
      // * Artist(s)
      // * The song's name
@@ -92,3 +107,16 @@ if (argv[2] == "do-what-it-says") {
 	    	spotThis(movieWords);
 	  });
 	};
+
+		function tweets() {//client = get keys from keys.js, params = twitter Screen Name
+			var params = {screen_name: 'limezZublime'};
+  			client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    			if (!error) {
+      			for (var i = 0; i < tweets.length; i++) {
+      				//console.log(response);
+        			console.log(tweets[i].text);
+        			console.log(tweets[i].created_at);
+      }
+ 	 }
+	});
+};
