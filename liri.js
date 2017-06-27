@@ -1,5 +1,5 @@
 
-
+	
 //global variables:
 var fs = require("fs");
 var tk = require("./keys.js");
@@ -21,12 +21,12 @@ var spotify = new Spotify({
 	id: "b186e3b489564b47ae52fe55bfc92a6e",
 	secret: "9b7091dbd1064c0db44445bee55881db"
 });
-var txtfile = require("./log.txt");
-fs.appendFile("log.txt", " " + argv + " ", function(err){
-	if (err) {
-		console.log(err);
-	}
-});
+// var txtfile = require("./log.txt");
+// fs.appendFile("log.txt", " " + argv + " ", function(err){
+// 	if (err) {
+// 		console.log(err);
+// 	}
+// });
 if (argv[2] == "movie-this") {
 	movieThis();
 }
